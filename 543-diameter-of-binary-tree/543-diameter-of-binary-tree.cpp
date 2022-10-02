@@ -11,23 +11,27 @@
  */
 class Solution {
 public:
-    int height(TreeNode* root)
-    {
-        if(root==NULL)
-            return 0;
-        return 1+max(height(root->left),height(root->right));
+    int height(TreeNode* root, int &ans)
+    { if (root == NULL)
+        return 0;
+ 
+    int lh = height(root->left, ans);
+ 
+    int rh = height(root->right, ans);
+ 
+    // update the answer, because diameter of a
+    // tree is nothing but maximum value of
+    // (left_height + right_height + 1) for each node
+    ans = max(ans, 1 + lh + rh);
+ 
+    return 1 + max(lh, rh);
     }
     int diameterOfBinaryTree(TreeNode* root) {
-        if(root==NULL)
-        {
-            return 0;
-        }
-        int lh=diameterOfBinaryTree(root->left);
-        int rh=diameterOfBinaryTree(root->right);
-        int d=height(root->left)+height(root->right);
-        d= max(d,max(lh,rh));
-        return d;
-        
+       if (root == NULL)
+        return 0;
+    int ans = INT_MIN; // This will store the final answer
+    height(root, ans);
+    return ans-1;
         
     }
 };
