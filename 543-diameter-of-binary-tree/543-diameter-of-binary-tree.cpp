@@ -29,9 +29,9 @@ public:
     int diameterOfBinaryTree(TreeNode* root) {
        if (root == NULL)
         return 0;
-    int ans = INT_MIN; // This will store the final answer
-    height(root, ans);
-    return ans;
+    int res = INT_MIN; // This will store the final answer
+    height(root, res);
+    return res;
         
     }
 };
