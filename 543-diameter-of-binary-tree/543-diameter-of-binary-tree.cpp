@@ -22,7 +22,7 @@ public:
     // update the answer, because diameter of a
     // tree is nothing but maximum value of
     // (left_height + right_height + 1) for each node
-    ans = max(ans, 1 + lh + rh);
+    ans = max(ans, lh + rh);
  
     return 1 + max(lh, rh);
     }
@@ -31,7 +31,7 @@ public:
         return 0;
     int ans = INT_MIN; // This will store the final answer
     height(root, ans);
-    return ans-1;
+    return ans;
         
     }
 };
