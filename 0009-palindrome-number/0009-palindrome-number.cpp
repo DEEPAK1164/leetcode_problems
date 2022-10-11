@@ -15,15 +15,24 @@ public:
         }
         int n=v.size();
         int i=0,j=n-1;
-        cout<<n<<" ";
-        for(i=0,j=n-1;i<n;i++)
-        {
+    while(i<=j)
+    {
+        if(v[i]!=v[j])
+            return false;
+        //return true;
+        i++;
+        j--;
+        
+        
+    }
+//         for(i=0,j=n-1;i<n;i++)
+//         {
     
-            if(v[i]!=v[j])
-                return false;
-            j--;
-            // break;
-        }
+//             if(v[i]!=v[j])
+//                 return false;
+//             j--;
+//             // break;
+//         }
         return true;  
     }
 };
