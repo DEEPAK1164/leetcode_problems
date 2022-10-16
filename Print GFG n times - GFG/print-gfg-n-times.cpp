@@ -10,9 +10,9 @@ class Solution {
     {
         if(N==0)
         return;
-        //cout<<"GFG"<<" ";
-        printGfg(N-1);
         cout<<"GFG"<<" ";
+        printGfg(N-1);
+       // cout<<"GFG"<<" ";
         
         
         // Code here
