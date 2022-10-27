@@ -5,7 +5,7 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-  void bfs(int r,int c,vector<vector<int>>&vis,vector<vector<char>>grid)
+  void bfs(int r,int c,vector<vector<int>>&vis,vector<vector<char>>&grid)
   {
       int n=grid.size();
       int m=grid[0].size();
