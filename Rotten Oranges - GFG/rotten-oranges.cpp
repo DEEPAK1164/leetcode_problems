@@ -20,7 +20,7 @@ class Solution
                 if(grid[i][j]==2)
                 {
                     q.push({{i,j},0});
-                    vis[i][j]==2;
+                    vis[i][j]=2;
                 }
                 else
                 {
