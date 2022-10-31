@@ -22,8 +22,9 @@ class Solution {
               vis[adjacentnode]=1;
               q.push({adjacentnode,node});
               }
-                 else if(parent!=adjacentnode)
+                 else 
                  {
+                     if(parent!=adjacentnode)
                   return true;
                  }
         
