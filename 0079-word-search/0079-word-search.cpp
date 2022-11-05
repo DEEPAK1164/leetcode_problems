@@ -3,7 +3,7 @@ public:
     //pass board by reference
     bool search(vector<vector<char>>& board, string word, int i, int j, int n) {
 		//check if all the alphabets in the word is checked
-        if(n == word.size()) return true; 
+        if(n >= word.size()) return true; 
 		//check if i and j are out of bound or if the characters aren't equal
         if(i < 0 || i >= board.size() || j < 0 || j >= board[i].size() || board[i][j] != word[n]) return false;
 		//mark as visited 
