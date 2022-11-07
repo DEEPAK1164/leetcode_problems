@@ -18,13 +18,13 @@ public:
             }
         }
         int sum=0;
-        int x=v.size();
+        int x=v.size()-1;
         for(int i=0;i<v.size();i++)
         {
             sum+=v[i]*pow(10,x);
             x--;
         }
-        return sum/10;
+        return sum;
         
     }
 };
