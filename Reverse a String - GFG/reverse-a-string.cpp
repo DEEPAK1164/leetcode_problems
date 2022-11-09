@@ -29,12 +29,13 @@ int main() {
 
 
 //User function Template for C++
-void rev(string& s,int i,int j)
+void rev(string & s,int i)
 {
-    if(i>=j)
+    
+    if(i>=s.size()/2)
     return;
-    swap(s[i],s[j]);
-    rev(s,i+1,j-1);
+    swap(s[i],s[s.size()-i-1]);
+    rev(s,i+1);
 }
 
     
@@ -42,7 +43,7 @@ void rev(string& s,int i,int j)
 
 string reverseWord(string str){
     
-    rev(str,0,str.size()-1);
+    rev(str,0);
     return str;
   //Your code here
 }
