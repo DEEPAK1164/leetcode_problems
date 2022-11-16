@@ -23,9 +23,6 @@ public:
               if(s.size()==1)
             return true;
         }
-      
-        
-        
          return false;
     }
    
