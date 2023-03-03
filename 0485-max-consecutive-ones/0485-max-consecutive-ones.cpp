@@ -15,6 +15,7 @@ public:
                 }
                 else
                 {
+                    i=j;
                     break;
                 }
             }
