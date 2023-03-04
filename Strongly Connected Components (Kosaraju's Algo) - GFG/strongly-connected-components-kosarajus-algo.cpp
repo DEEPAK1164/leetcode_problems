@@ -15,7 +15,7 @@ class Solution
         st.push(i);
     
     }
-    void dfs2(int i,vector<int>&vis,vector<int> adjr[]){
+    void dfs2(int i,vector<int>&vis,vector<vector<int>>& adjr){
          vis[i]=1;
         for(auto it:adjr[i]){
             if(!vis[it]) dfs2(it,vis,adjr);
@@ -34,7 +34,7 @@ class Solution
             if(!vis[i]) dfs(i,vis,adj,st);
         }
         
-        vector<int> adjr[v];// reverse arrow dir of nod
+       vector<vector<int>>adjr(v);// reverse arrow dir of nod
         for(int i=0;i<v;i++){
             vis[i]=0;
             for(auto it:adj[i]){
