@@ -13,7 +13,7 @@ class Solution
             if(!vis[it]) dfs(it,vis,adj,st);
         }
         st.push(i);
-        return;
+    
     }
     void dfs2(int i,vector<int>&vis,vector<int> adjr[]){
          vis[i]=1;
@@ -21,7 +21,7 @@ class Solution
             if(!vis[it]) dfs2(it,vis,adjr);
         }
         
-        return;
+
     }
 	public:
 	//Function to find number of strongly connected components in the graph.
