@@ -1,12 +1,12 @@
 class Solution {
 public:
     long long minimumTime(vector<int>& time, int totalTrips) {
-        long long l=1,h=1e14,ans=h;
+        long long l=1,h=1e14,mid;
         sort(time.begin(),time.end());
         while(l<h)
         {
             long long sm=0;
-            long long  mid=l+(h-l)/2;
+            mid=l+(h-l)/2;
             for(int i=0;i<time.size();i++)
             {
               sm+=mid/time[i];
