@@ -2,7 +2,7 @@ class Solution {
 public:
     long long minimumTime(vector<int>& time, int totalTrips) {
         long long l=1,h=1e14,mid;
-        sort(time.begin(),time.end());
+    
         while(l<h)
         {
             long long sm=0;
