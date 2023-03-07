@@ -13,12 +13,12 @@ public:
             }
             if(sm>=totalTrips)
             {
-                ans=min(mid,ans);
+                //ans=min(mid,ans);
                 h=mid;
             }
             else
                 l=mid+1;
         }
-        return ans;
+        return h ;
     }
 };
