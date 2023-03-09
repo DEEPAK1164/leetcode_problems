@@ -91,11 +91,14 @@ class Solution {
                 }
             }
             
-            if(isAnagram(tempStr,s)) {
-                prev->next = NULL;
+            if(isAnagram(tempStr,s))
+            {
+               
                 ans.push_back(front);
-                
-            } else {
+                 prev->next = NULL;
+            } 
+            else 
+            {
                 head = front->next;
             }
             front = head;
