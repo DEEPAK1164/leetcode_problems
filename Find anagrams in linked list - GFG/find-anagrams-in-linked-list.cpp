@@ -92,7 +92,7 @@ class Solution {
             }
             
             if(isAnagram(tempStr,s)) {
-                prev->next = nullptr;
+                prev->next = NULL;
                 ans.push_back(front);
                 
             } else {
