@@ -67,8 +67,9 @@ class Solution {
             arr[s1[i] - 'a']++;
             arr[s2[i] - 'a']--;
         }        
-        for(int i : arr) {
-            if(i!=0) return false;
+        for(auto it : arr) {
+            if(it!=0)
+            return false;
         }
         return true;
     }
