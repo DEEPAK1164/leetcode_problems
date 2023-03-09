@@ -77,11 +77,8 @@ class Solution {
         vector<Node*> ans;
         Node* front = head;
         Node* prev = NULL;
-        if(head==NULL)
+        while(head!=NULL)
         {
-        return ans;
-        }
-        while(head!=NULL){
             string tempStr ;
             for(int i = 0; i < s.size(); i++){
                 if(head!=NULL) {
@@ -93,9 +90,9 @@ class Solution {
             
             if(isAnagram(tempStr,s))
             {
-               
+               prev->next = NULL;
                 ans.push_back(front);
-                 prev->next = NULL;
+                 
             } 
             else 
             {
@@ -103,6 +100,12 @@ class Solution {
             }
             front = head;
         }
+        
+         if(head==NULL)
+        {
+        return ans;
+        }
+        
     }
 };
 
