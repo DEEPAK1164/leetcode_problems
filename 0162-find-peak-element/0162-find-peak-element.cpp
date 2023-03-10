@@ -7,7 +7,7 @@ public:
 		{
 			int mid = (low + high) / 2;
 
-			if((mid == 0 || arr[mid - 1] <= arr[mid]) &&
+			if((mid == 0 || arr[mid - 1] <arr[mid]) &&
 				(mid == n - 1 || arr[mid + 1] <arr[mid]))
 				return mid;
 			if(mid > 0 && arr[mid - 1] > arr[mid])
