@@ -16,8 +16,8 @@ class Solution
 bool isFeasible(int arr[],int n,int k, int ans){
     int req=1,sum=0;
     for(int i=0;i<n;i++){
-        if(arr[i]>ans)
-        return false;
+        // if(arr[i]>ans)
+        // return false;
         if(sum+arr[i]>ans){
             req++;
             sum=arr[i];
