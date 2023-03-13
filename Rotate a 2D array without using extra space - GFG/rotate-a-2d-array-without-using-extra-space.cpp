@@ -22,9 +22,8 @@ int l=0;
 int h=n-1;
 while(l<h)
 {
-    swap(mat[l][i],mat[h][i]);
-    l++;
-    h--;
+    swap(mat[l++][i],mat[h--][i]);
+   
     
 }
 }
