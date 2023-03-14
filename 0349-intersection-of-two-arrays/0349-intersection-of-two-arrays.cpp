@@ -1,19 +1,15 @@
 class Solution {
 public:
     vector<int>intersection(vector<int>& nums1, vector<int>& nums2) {
-        set<int>st;
-        sort(nums2.begin(),nums2.end());
-        for(int i=0;i<nums1.size();i++)
-        {
-            if(binary_search(nums2.begin(),nums2.end(),nums1[i]))
-            {
-                st.insert(nums1[i]);
-            }
-        }
+        unordered_set<int>st(nums1.begin(),nums1.end());
+        unordered_set<int>st1(nums2.begin(),nums2.end());
         vector<int>v;
-        for(auto it:st)
+        for(auto it=st1.begin();it!=st1.end();it++)
         {
-            v.push_back(it);
+            if(st.find(*it)!=st.end())
+            {
+                v.push_back(*it);
+            }
         }
         return v;
     }
