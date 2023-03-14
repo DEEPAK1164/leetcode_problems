@@ -6,7 +6,7 @@ public:
         vector<int>v;
         for(auto it=st1.begin();it!=st1.end();it++)
         {
-            if(st.find(*it)!=st.end())
+            if(st.count(*it))
             {
                 v.push_back(*it);
             }
