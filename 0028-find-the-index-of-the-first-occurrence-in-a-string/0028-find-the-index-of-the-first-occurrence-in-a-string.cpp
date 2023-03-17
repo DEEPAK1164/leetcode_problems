@@ -1,47 +1,48 @@
 class Solution {
 public:
-    #define d 256
-const int q=2;
-void RBSearch(string txt,string pat,int N, int M,vector<int>&v){
-    
-    //Compute (d^(M-1))%q
-    int h=1;
-    for(int i=1;i<=M-1;i++)
-        h=(h*d)%q;
-    
-    //Compute p and to
-    int p=0,t=0;
-    for(int i=0;i<M;i++){
-        p=(p*d+pat[i])%q;
-        t=(t*d+txt[i])%q;
+    void fillLPS(string str, int *lps){
+    int n=str.length(),len=0;
+    lps[0]=0;
+    int i=1;
+    while(i<n){
+        if(str[i]==str[len])
+        {len++;lps[i]=len;i++;}
+        else
+        {if(len==0){lps[i]=0;i++;}
+            else{len=lps[len-1];}
+        }
     }
-    
-    for(int i=0;i<=(N-M);i++){
-       //Check for hit
-       if(p==t){
-           bool flag=true;
-           for(int j=0;j<M;j++)
-                if(txt[i+j]!=pat[j]){flag=false;break;}
-            if(flag==true)
-                v.push_back(i);
-       }
-       //Compute ti+1 using ti
-       if(i<N-M){
-           t=((d*(t-txt[i]*h))+txt[i+M])%q;
-        if(t<0)t=t+q;
-       }
-    }
-    
 }
-    int strStr(string haystack, string needle)
-    {
-        vector<int>ans;
-        RBSearch( haystack,needle,haystack.size(), needle.size(),ans);
-        if(ans.size()==0)
+    void KMP(string txt,string pat,vector<int>&v){
+    int N=txt.length();
+    int M=pat.length();
+    int lps[M];
+    fillLPS(pat,lps);
+    int i=0,j=0;
+    while(i<N){
+        if(pat[j]==txt[i]){i++;j++;}
+
+        if (j == M) { 
+            v.push_back(i-j);
+            j = lps[j - 1]; 
+        } 
+        else if (i < N && pat[j] != txt[i]) { 
+            if (j == 0) 
+                i++;
+            else
+                j = lps[j - 1];  
+        }
+    }
+}
+ 
+    int strStr(string haystack, string needle) {
+        vector<int>v;
+        int lps[needle.size()];
+        fillLPS(needle, lps);
+        KMP( haystack,needle,v);
+        if(v.size()==0)
             return -1;
-        return ans[0];
+        return v[0];
         
-        
-      
     }
 };
