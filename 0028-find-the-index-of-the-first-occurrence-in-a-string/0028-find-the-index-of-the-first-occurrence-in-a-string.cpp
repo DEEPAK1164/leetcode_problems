@@ -1,7 +1,7 @@
 class Solution {
 public:
     #define d 256
-const int q=17;
+const int q=101;
 void RBSearch(string txt,string pat,int N, int M,vector<int>&v){
     
     //Compute (d^(M-1))%q
