@@ -26,9 +26,9 @@ public:
             if (!visit[i]) {
                 sizeOfComponent = dfs(i, adj, visit);
                 numberOfPairs += sizeOfComponent * (remainingNodes - sizeOfComponent);
-                remainingNodes -= sizeOfComponent;
+            
             }
         }
-        return numberOfPairs;
+        return numberOfPairs/2;
     }
 };
