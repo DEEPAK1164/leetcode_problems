@@ -12,7 +12,7 @@ public:
     }
 
     long long countPairs(int n, vector<vector<int>>& edges) {
-        vector<int> adj[n+1];
+        vector<int> adj[n];
         for (auto edge : edges) {
             adj[edge[0]].push_back(edge[1]);
             adj[edge[1]].push_back(edge[0]);
