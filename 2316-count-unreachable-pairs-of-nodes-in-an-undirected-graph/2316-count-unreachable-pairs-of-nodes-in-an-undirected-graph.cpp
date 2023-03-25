@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dfs(int node, vector<vector<int>>& adj, vector<bool>& visit) {
+    int dfs(int node, vector<int>adj[], vector<bool>& visit) {
         int count = 1;
         visit[node] = true;
         for (int neighbor : adj[node]) {
@@ -12,7 +12,7 @@ public:
     }
 
     long long countPairs(int n, vector<vector<int>>& edges) {
-        vector<vector<int>> adj(n+1);
+        vector<int> adj[n+1];
         for (auto edge : edges) {
             adj[edge[0]].push_back(edge[1]);
             adj[edge[1]].push_back(edge[0]);
