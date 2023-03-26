@@ -118,7 +118,7 @@ Node* reverseDLL(Node * head)
         
         curr=curr->prev;
     }
-     if(temp!=NULL)head=temp->prev;
+     head=temp->prev;
     return head;
     
     
