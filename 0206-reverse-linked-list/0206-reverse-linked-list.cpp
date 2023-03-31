@@ -10,22 +10,32 @@
  */
 class Solution {
 public:
+    ListNode* th=NULL;
+    ListNode* tt=NULL;
+    void addFirst(ListNode* node)
+    {
+        if(th==NULL)
+        {
+            th=node;
+            tt=node; 
+        }
+        else
+        {
+            node->next=th;
+            th=node;
+        }
+    }
+   
     ListNode* reverseList(ListNode* head) {
-        ListNode* prev=NULL;
+      
         ListNode* curr=head;
         while(curr!=NULL)
         {
-            ListNode* next=curr->next;
-            curr->next=prev;
-            prev=curr;
-            curr=next;
-            
-            
-            
-            
+        ListNode* forw=curr->next;
+            curr->next=NULL;
+        addFirst(curr);
+        curr=forw;
         }
-        
-        return prev;
-        
+        return th;
     }
 };
