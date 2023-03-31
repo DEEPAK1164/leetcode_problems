@@ -8,11 +8,12 @@
  */
 class Solution {
 public:
-    bool hasCycle(ListNode *head) {
-        
+    bool hasCycle(ListNode *head) 
+    {
     unordered_set<ListNode*> s; 
-    for(ListNode *curr=head;curr!=NULL;curr=curr->next) {  
-        if (s.find(curr) != s.end()) 
+    for(ListNode *curr=head;curr!=NULL;curr=curr->next) 
+    {  
+        if (s.count(curr) ==1) 
             return true; 
         s.insert(curr); 
     } 
