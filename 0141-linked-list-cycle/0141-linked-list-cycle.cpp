@@ -10,13 +10,23 @@ class Solution {
 public:
     bool hasCycle(ListNode *head) 
     {
-    unordered_set<ListNode*> s; 
-    for(ListNode *curr=head;curr!=NULL;curr=curr->next) 
-    {  
-        if (s.count(curr) ==1) 
-            return true; 
-        s.insert(curr); 
-    } 
-    return false; 
+        ListNode* dummy=new ListNode;
+        ListNode* curr=head;
+        bool ok=false;
+        while(curr!=NULL)
+        {
+           
+            if(curr->next==dummy)
+            {
+                ok= true;
+                break;
+            }
+            ListNode* temp=curr->next;
+            curr->next=dummy;
+            curr=temp;  
+        }
+          if(ok)
+              return true;
+        return false;
     }
 };
