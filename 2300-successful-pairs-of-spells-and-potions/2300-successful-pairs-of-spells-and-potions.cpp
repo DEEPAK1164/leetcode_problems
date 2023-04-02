@@ -12,7 +12,8 @@ public:
             long long int d=(ceil)((double)(1.0*success)/spells[i]);
             int ind=lower_bound(potions.begin(),potions.end(),(int)d)-potions.begin();
           
-            if(d>potions[m-1]){v.push_back(0);continue;}
+            if(d>potions[m-1]){v.push_back(0);}
+            else
                 v.push_back(m-ind);
            
         }  
