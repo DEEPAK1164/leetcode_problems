@@ -12,25 +12,25 @@
 class Solution {
 public:
     int preIndex=0;
-TreeNode *cTree(vector<int>&inorder,vector<int>&preorder,int is,int ie){
+TreeNode *cTree(vector<int>&inorder,vector<int>&preorder,int is,int ie,unordered_map<int,int>&mp){
     if(is>ie)return NULL;
     TreeNode *root=new TreeNode(preorder[preIndex++]);
     
-    int inIndex;
-    for(int i=is;i<=ie;i++){
-        if(inorder[i]==root->val){
-            inIndex=i;
-            break;
-        }
-    }
-    root->left=cTree(inorder, preorder, is, inIndex-1);
-    root->right=cTree(inorder, preorder, inIndex+1, ie);
+    int inIndex=mp[root->val];
+   
+    root->left=cTree(inorder, preorder, is, inIndex-1,mp);
+    root->right=cTree(inorder, preorder, inIndex+1, ie,mp);
     return root;
 }
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        unordered_map<int,int>mp;
+        for(int i=0;i<inorder.size();i++)
+        {
+            mp[inorder[i]]=i;
+        }
         int is=0;
         int ie=inorder.size()-1;
-        TreeNode* root=cTree(inorder,preorder,0,ie);
+        TreeNode* root=cTree(inorder,preorder,0,ie,mp);
         return root;
         
     }
