@@ -38,11 +38,11 @@ public:
                 }    
             }
             for(auto node: v){
-            int  t = sm;
-            if(node->left)  t -= node->left->val;
-            if(node->right) t -= node->right->val;
-            if(node->left)  node->left->val = t;
-            if(node->right) node->right->val = t;
+            int  nextLevelSum= sm;
+            if(node->left)  nextLevelSum -= node->left->val;
+            if(node->right) nextLevelSum -= node->right->val;
+            if(node->left)  node->left->val =nextLevelSum;
+            if(node->right) node->right->val = nextLevelSum;
         }
         }
         return root;
