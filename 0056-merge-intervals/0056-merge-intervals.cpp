@@ -9,7 +9,7 @@ public:
         {
             int f=intervals[i][0];
             int s=intervals[i][1];
-            if(!ans.empty()&&f<=ans.back()[1]){
+            if(!ans.empty()&&s<=ans.back()[1]){
                 continue;
             }
             for(int j=i+1;j<n;j++)
