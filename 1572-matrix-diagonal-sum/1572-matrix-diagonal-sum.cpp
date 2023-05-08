@@ -13,7 +13,7 @@ public:
                     if(i==j)
                     {
                         sm+=mat[i][j];
-                        break;
+                    
                     }
                 }
             }
