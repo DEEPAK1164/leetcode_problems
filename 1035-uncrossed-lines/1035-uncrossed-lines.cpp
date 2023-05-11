@@ -1,12 +1,12 @@
 class Solution {
 public:
-    int dp[502][502];
+    int dp[500][500];
     int rec(vector<int>& nums1,int i, vector<int>& nums2,int j)
     {
         int ct=0;
         if(i==nums1.size()||j==nums2.size())
         {
-            return 0;
+            return dp[i][j]=0;
         }
         
         if(dp[i][j]!=-1) return dp[i][j];
