@@ -10,10 +10,11 @@ public:
         long long ans= INT_MIN;
 
         // way 1 
-ans= max(ans, questions[idx][0]+ func(idx + questions[idx][1]+1, questions));
+long long l= questions[idx][0]+ func(idx + questions[idx][1]+1, questions);
 
        // way 2
-ans= max(ans, func(idx+1, questions));  
+long long r= func(idx+1, questions);  
+        ans=max(ans,max(l,r));
 
     return dp[idx]= ans;
     }
