@@ -2,12 +2,13 @@ class Solution {
 public:
     bool srch(vector<int>&v,int &p)
     {
+        int mid;
         int l=0;
         bool ok=false;
         int r=v.size()-1;
         while(l<=r)
         {
-            int mid=l+(r-l)/2;
+           mid=l+(r-l)/2;
             if(v[mid]==p)
             {
                 ok= true;
