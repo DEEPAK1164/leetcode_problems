@@ -8,7 +8,7 @@ class MyHashSet {
 public:  
     
     MyHashSet() {
-     bucketSize=10000;
+     bucketSize=10001;
         bucket=vector<vector<int>>(bucketSize,vector<int>{});
     }
     
