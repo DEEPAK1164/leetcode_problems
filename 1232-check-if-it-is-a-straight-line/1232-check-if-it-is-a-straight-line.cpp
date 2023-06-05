@@ -36,7 +36,7 @@ public:
             
         }
      
-        return ok|| (  v1.size()==v.size()||v2.size()==v.size());
+        return ok|| (  v1.size()==v.size())||(v2.size()==v.size());
         
         
         
