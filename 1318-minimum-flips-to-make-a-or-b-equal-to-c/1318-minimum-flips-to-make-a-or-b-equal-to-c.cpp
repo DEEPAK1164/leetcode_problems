@@ -1,36 +1,48 @@
 class Solution {
 public:
-    bool checkKthBit(int n, int k)
+    int ctb(int n)
     {
-        // Your code here
-        // It can be a one liner logic!! Think of it!!
-        while(n>0) {
-            if(k==0) {
-                if(n%2==1) return true;
-                else return false;
-            }
-            n = n>>1;
-            k--;
-        }
-      return false;
+    
+    int ct=0;
+    while(n){
+      ct++;
+      n =n>> 1;
+   }
+        return ct;
     }
     int minFlips(int a, int b, int c) {
-        int ct=0;
-        for(int i=31;i>=0;i--)
+        int ans=0;
+        int xx=a;
+        int yy=b;
+        int zz=c;
+        int x=ctb(xx);
+       int  y=ctb(yy);
+       int  z=ctb(zz);
+        int len=max(max(x,y),z);
+        while(len)
         {
-            if(checkKthBit(c, i))
+            int stc=c&1;
+            int sta=a&1;
+            int stb=b&1;
+            if(stc==0)
             {
-                if(checkKthBit(a, i)==false&&checkKthBit(b, i)==false)
-                    ct++;
+                if(sta==1 && stb==1)ans+=2;
+                else if(sta || stb) ans++;
             }
             else
             {
-                 if(checkKthBit(a, i)==true&&checkKthBit(b, i)==true)
-                     ct+=2;
-                else if(checkKthBit(a, i)==true||checkKthBit(b, i)==true)
-                    ct++;
+                if((sta==0)&&(stb==0))
+                   {
+                      ans++;
+                   }
             }
+            a=a>>1;
+            b=b>>1;
+            c=c>>1;    
+            len--;       
         }
-        return ct;
+        
+        return ans;
+        
     }
 };
