@@ -1,18 +1,16 @@
 class Solution {
 public:
     vector<int> getRow(int rowIndex) {
-        vector<vector<int>>r(34);
-        for(int i=0;i<34;i++)
+        long long ans=1;
+        int n=rowIndex+1;
+        vector<int>v;
+        v.push_back(ans);
+        for(int i=1;i<n;i++)
         {
-            r[i].resize(i+1);
-            r[i][0]=r[i][i]=1;
-            for(int j=1;j<i;j++)
-            {
-                r[i][j]=r[i-1][j-1]+r[i-1][j];
-            }
-            
+            ans=ans*(n-i);
+            ans=ans/i;
+            v.push_back(ans);
         }
-        return r[rowIndex];
-        
+        return v;
     }
 };
