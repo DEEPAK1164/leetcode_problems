@@ -1,27 +1,51 @@
 class Solution {
 public:
-    void printRth(int r,vector<int>&v)
-    {
-        int ans=1;
-        v.push_back(ans);
-        for(int i=1;i<r;i++)
+    vector<vector<int>> generate(int numRows) {
+         int n=numRows;
+        vector<vector<int>> v;
+        for(int i=0;i<n;i++)
         {
-            ans=ans*(r-i);
-            ans=ans/i;
-            v.push_back(ans);
-        }
-    }
-    vector<vector<int>> generate(int numRows) 
-    {
-        vector<vector<int>>vv;
-        int n=numRows;
-        for(int i=1;i<=n;i++)
-        {
-            vector<int>s;
-            printRth(i,s);
-            vv.push_back(s);
+            vector<int> ans;
+          if(i==0)
+                {
+                    ans.push_back(1);
+                }
+                else if(i==1)
+                {
+                     ans.push_back(1);
+                     ans.push_back(1);
+                     
+                }
+                else{
+
+            for(int j=0;j<=i;j++)
+            {
+                
+                
+                    if(j==0)
+                    {
+                        ans.push_back(1);
+                        
+                    }
+                    else if(j>0 && j<i)
+                    {
+                      ans.push_back(v[i-1][j]+v[i-1][j-1]);
+                                     
+                    }
+                    else if(j==i)
+                    {
+                        ans.push_back(1);
+                    }
+                }
+            
             
         }
-       return vv; 
+
+
+        v.push_back(ans);
+        ans.clear();
+        
+        }
+        return v;
     }
 };
