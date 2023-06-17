@@ -1,17 +1,27 @@
 class Solution {
 public:
-    vector<vector<int>> generate(int numRows) {
-        vector<vector<int>>r(numRows);
-        for(int i=0;i<numRows;i++)
+    void printRth(int r,vector<int>&v)
+    {
+        int ans=1;
+        v.push_back(ans);
+        for(int i=1;i<r;i++)
         {
-            r[i].resize(i+1);
-            r[i][0]=r[i][i]=1;
-            for(int j=1;j<i;j++)
-            {
-                r[i][j]=r[i-1][j-1]+r[i-1][j];
-            }
+            ans=ans*(r-i);
+            ans=ans/i;
+            v.push_back(ans);
+        }
+    }
+    vector<vector<int>> generate(int numRows) 
+    {
+        vector<vector<int>>vv;
+        int n=numRows;
+        for(int i=1;i<=n;i++)
+        {
+            vector<int>s;
+            printRth(i,s);
+            vv.push_back(s);
             
         }
-        return r;
+       return vv; 
     }
 };
