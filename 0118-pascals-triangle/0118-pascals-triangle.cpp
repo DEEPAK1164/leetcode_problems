@@ -43,7 +43,7 @@ public:
 
 
         v.push_back(ans);
-        ans.clear();
+        //ans.clear();
         
         }
         return v;
