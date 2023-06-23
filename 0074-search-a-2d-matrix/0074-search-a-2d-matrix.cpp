@@ -1,36 +1,36 @@
 class Solution {
 public:
-    bool srch(vector<vector<int>>&matrix,int &p)
+    bool bs(vector<int>&v,int x)
     {
-        int mid;
         int l=0;
-        bool ok=false;
-        int x=matrix.size()*matrix[0].size();
-        int r=x-1;
+        int r=v.size()-1;
+        int mid;
         while(l<=r)
         {
-           mid=l+(r-l)/2;
-            int i=mid/matrix[0].size();
-            int j=mid%matrix[0].size();
-            if(matrix[i][j]==p)
+            mid=l+(r-l)/2;
+            if(v[mid]==x)
+                return true;
+            if(v[mid]<x)
             {
-                ok= true;
-                break;
-            }
-            else if(matrix[i][j]<p)
-            {
-                l=mid+1;
+              l=mid+1;  
             }
             else
             {
                 r=mid-1;
             }
         }
+        return false;
         
-        return ok; 
     }
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
-       
-        return srch(matrix,target);
+        int n=matrix.size();
+        for(int i=0;i<n;i++)
+        {
+            if(bs(matrix[i],target))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 };
