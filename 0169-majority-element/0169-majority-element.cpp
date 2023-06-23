@@ -6,8 +6,9 @@ public:
         int el;
         for (int i = 0; i < n; i++) {
         if (cnt == 0) {
-            cnt++;
+         
             el = v[i];
+               cnt++;
         }
         else if (el == v[i]) cnt++;
         else cnt--;
