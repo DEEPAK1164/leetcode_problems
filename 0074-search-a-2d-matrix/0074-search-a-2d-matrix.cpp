@@ -1,36 +1,40 @@
 class Solution {
 public:
-    bool bs(vector<int>&v,int x)
-    {
-        int l=0;
-        int r=v.size()-1;
-        int mid;
-        while(l<=r)
-        {
-            mid=l+(r-l)/2;
-            if(v[mid]==x)
-                return true;
-            if(v[mid]<x)
-            {
-              l=mid+1;  
-            }
-            else
-            {
-                r=mid-1;
-            }
-        }
-        return false;
-        
-    }
-    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+    bool searchMatrix(vector<vector<int>>& matrix, int x) {
+        vector<int>v;
         int n=matrix.size();
+        int m=matrix[0].size();
         for(int i=0;i<n;i++)
         {
-            if(bs(matrix[i],target))
+            for(int j=0;j<m;j++)
             {
-                return true;
+                v.push_back(matrix[i][j]);
             }
         }
-        return false;
+        bool ok=false;
+        int l=0,r=v.size()-1;
+        int mid;
+        while (l <= r) {
+         mid = l + (r - l) / 2;
+ 
+        // Check if x is present at mid
+        if (v[mid] == x)
+        {
+            ok=true;
+            break;
+        }
+ 
+        // If x greater, ignore left half
+        if (v[mid] < x)
+            l = mid + 1;
+ 
+        // If x is smaller, ignore right half
+        else
+            r = mid - 1;
+    }
+        
+        return ok;
+        
+        
     }
 };
