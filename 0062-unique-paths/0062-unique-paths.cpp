@@ -3,14 +3,12 @@ public:
     int ncr(int n,int r)
     {
         
-        double ans=1;
-       for(int i=1;i<=r;i++)
-       {
-           ans*=(n-r+i);
-           ans/=(i);
-           
-       }
-        return (int)ans;
+        double res=1;
+      for (int i = 1; i <= r; i++) {
+        res = res * (n-r +i);
+        res = res / (i );
+    }
+    return (int)res;
         
     }
     int uniquePaths(int m, int n)
