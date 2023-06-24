@@ -1,32 +1,26 @@
 class Solution {
 public:
-    int uniquePaths(int m, int n) {
-        int dp[n][m];
-        for(int i=n-1;i>=0;i--)
+    int dp[101][101];
+    int rec(int r,int c ,int m,int n)
+    {
+        if(c>n||r>m)
         {
-            for(int j=m-1;j>=0;j--)
-            {
-                if(i==n-1&&j==m-1)
-                {
-                    dp[i][j]=1;
-                }
-                else if(i==n-1)
-                {
-                    dp[i][j]=1;
-                }
-                else if(j==m-1)
-                {
-                    dp[i][j]=1;
-                }
-                else
-                {
-                    dp[i][j]=dp[i+1][j]+dp[i][j+1];
-                }
-                
-                
-                
-            }
+            return 0;
         }
-        return dp[0][0];
+        if(c==n-1&&r==m-1)
+        {
+            return 1;
+        }
+        if(dp[r][c]!=-1)
+        {
+            return dp[r][c];
+        }
+        
+        return dp[r][c]= rec(r+1,c,m,n)+rec(r,c+1,m,n);
+    }
+    int uniquePaths(int m, int n) {
+        memset(dp, -1, sizeof(dp));
+        int ans=rec(0,0,m,n);
+        return ans;
     }
 };
