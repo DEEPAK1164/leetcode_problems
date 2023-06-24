@@ -2,8 +2,7 @@ class Solution {
 public:
     int rec(int r,int c,int n,int m,vector<vector<int>>&v,vector<vector<int>>&dp)
     {
-        if(v[n-1][m-1]==1)
-            return 0;
+       
         if((r>=n)||(c>=m)||(v[r][c]==1))
             return 0;
         if(r==(n-1)&&c==(m-1))
