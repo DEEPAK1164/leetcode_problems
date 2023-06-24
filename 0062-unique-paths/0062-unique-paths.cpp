@@ -1,18 +1,22 @@
 class Solution {
 public:
-     int countPaths(int i,int j,int n,int m,vector<vector<int>> &dp)
+    int ncr(int n,int r)
     {
-        if(i==(n-1)&&j==(m-1)) return 1;
-        if(i>=n||j>=m) return 0;
-        if(dp[i][j]!=-1) return dp[i][j];
-     else return dp[i][j]=countPaths(i+1,j,n,m,dp)+countPaths(i,j+1,n,m,dp);
+        
+        double ans=1;
+       for(int i=1;i<=r;i++)
+       {
+           ans*=(n-r+i);
+           ans/=(i);
+           
+       }
+        return (int)ans;
         
     }
-    int uniquePaths(int m, int n) {
-         vector<vector<int>> dp(m+1,vector<int>(n+1,-1));
-       
-        //dp[1][1]=1;
-       int num=countPaths(0,0,m,n,dp);
-        return num;
+    int uniquePaths(int m, int n)
+    {
+        if(n==1||m==1)
+            return 1;
+        return ncr((m+n-2),(m-1));
     }
 };
