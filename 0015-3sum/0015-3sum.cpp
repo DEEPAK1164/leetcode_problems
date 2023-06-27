@@ -32,7 +32,7 @@ public:
                     {
                         j++;
                     }
-                    while(k>0 && nums[k]==nums[k+1])
+                    while(j<k && nums[k]==nums[k+1])
                     {
                         k--;
                     }
