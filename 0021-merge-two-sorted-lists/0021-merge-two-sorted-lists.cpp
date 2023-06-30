@@ -46,7 +46,11 @@ public:
             d=d->next;
                 j=j->next;
         }
-        return head->next;
+        ListNode* t=head;
+        head=head->next;
+        t->next=NULL;
+        delete(t);
+        return head;
         
     }
 };
