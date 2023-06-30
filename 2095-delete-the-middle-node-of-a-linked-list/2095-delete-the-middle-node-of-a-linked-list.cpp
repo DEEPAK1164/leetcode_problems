@@ -21,11 +21,15 @@ public:
         }
         if(head==NULL||head->next==NULL)
         {
+            delete(head);
             return NULL;
         }
         if(head->next->next==NULL)
         {
+            ListNode* p=head;
+            p=p->next;
             head->next=NULL;
+            delete(p);
             return head;
         }
         
