@@ -1,37 +1,23 @@
 class Solution {
 public:
-    void fn(vector<int>&arr,vector<int>vis,vector<vector<int>>&ans,vector<int>&per)
+    void rec(vector<int>&nums,int ind,vector<vector<int>>&ans)
     {
-        if(per.size()==arr.size())
+        if(ind==nums.size())
         {
-            ans.push_back(per);
+            ans.push_back(nums);
             return;
         }
-        for(int i=0;i<arr.size();i++)
+        for(int i=ind;i<nums.size();i++)
         {
-            if(vis[i]==0)
-            {
-             
-                per.push_back(arr[i]);
-                vis[i]=1;
-                fn(arr,vis,ans,per);
-                vis[i]=0;
-                per.pop_back();
-
-            }
+            swap(nums[ind],nums[i]);
+            rec(nums,ind+1,ans);
+            swap(nums[ind],nums[i]);
         }
         
     }
-    vector<vector<int>> permute(vector<int>& nums) 
-    {
-        vector<int>per;
-        vector<int>vis(nums.size(),0);
-        int n=nums.size();
+    vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>>ans;
-        fn(nums,vis,ans,per);
+        rec(nums,0,ans);
         return ans;
-        
-        
-        
     }
 };
