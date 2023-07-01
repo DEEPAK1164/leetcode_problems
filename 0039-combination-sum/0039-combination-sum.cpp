@@ -1,38 +1,35 @@
 class Solution {
-    private:
-    void approach(int ind,int target,vector<int>&ds,vector<vector<int>>&ans,vector<int>&candidates)
+public:
+    void rec(vector<int>&candidates,int ind,int target,vector<vector<int>>&ans,vector<int>&ds)
     {
-        if(ind ==candidates.size())
+        if(ind==candidates.size())
         {
             if(target==0)
             {
                 ans.push_back(ds);
+                return;
             }
-            return;
-            
+            else
+            {
+                return;
+            }
         }
-        //pickup the element
+        
         if(candidates[ind]<=target)
         {
             ds.push_back(candidates[ind]);
-            approach(ind,target-candidates[ind],ds,ans,candidates);
+            rec(candidates,ind,target-candidates[ind],ans,ds);
             ds.pop_back();
         }
-        //non pick the element
-          approach(ind+1,target,ds,ans,candidates);
-        
-        
+        rec(candidates,ind+1,target,ans,ds);
         
         
         
     }
-public:
-    
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-    vector<vector<int>>ans;
+        vector<vector<int>>ans;
         vector<int>ds;
-        approach(0,target,ds,ans,candidates);
+        rec(candidates,0,target,ans,ds);
         return ans;
-        
     }
 };
