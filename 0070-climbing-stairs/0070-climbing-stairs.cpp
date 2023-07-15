@@ -2,15 +2,14 @@ class Solution {
 public:
     long long f(long long ind,vector<long long>&dp)
     {
-       if(ind==0||ind==1)
-       {
-           return 1;
-       }
-        if(dp[ind]!=-1)
+       dp[0]=1;
+        dp[1]=1;
+        for(int i=2;i<=ind;i++)
         {
-            return dp[ind];
+            dp[i]=dp[i-1]+dp[i-2];
         }
-        return dp[ind]=f(ind-1,dp)+f(ind-2,dp);
+        return dp[ind];
+       
     }
     long long climbStairs(long long n) {
         vector<long long>dp(n+1,-1);
