@@ -23,11 +23,11 @@ return dp[ind]=max(pick,notpick);
        vector<int>dp2(nums.size()+1,-1);
         vector<int>v1;
         vector<int>v2;
-        for(int i=0;i<nums.size()-1;i++)
+        for(int i=0;i<=nums.size()-2;i++)
         {
             v1.push_back(nums[i]);
         }
-        for(int i=1;i<nums.size();i++)
+        for(int i=1;i<=nums.size()-1;i++)
         {
             v2.push_back(nums[i]);
         }
