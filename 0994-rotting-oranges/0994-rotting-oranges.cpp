@@ -21,7 +21,7 @@ public:
             }
         }
         int tm=0;
-        int dr[]={-1,0,1,0};
+        int dr[]={1,0,-1,0};
         int dc[]={0,-1,0,1};
         while(!q.empty())
         {
