@@ -1,55 +1,74 @@
 class Solution {
 public:
-    void dfs(int x, int y, int m, int n, vector<vector<int>>& grid, vector<vector<bool>>& visit) {
-        if (x < 0 || x >= m || y < 0 || y >= n || grid[x][y] == 0 || visit[x][y]) {
-            return;
-        }
-
-        visit[x][y] = true;
-        vector<int> dirx{0, 1, 0, -1};
-        vector<int> diry{-1, 0, 1, 0};
-
-        for (int i = 0; i < 4; i++) {
-            dfs(x + dirx[i], y + diry[i], m, n, grid, visit);
-        }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    void dfs(vector<vector<int>>& grid,vector<vector<int>>& vis,int sr,int sc,int n,int m,int dc[],int dr[])
+    {
+      
+        vis[sr][sc]=1;
+        for(int i=0;i<4;i++)
+        {
+            int nr=sr+dr[i];
+            int nc=sc+dc[i];
+            if(nr>=0&&nr<n&&nc>=0&&nc<m&&!vis[nr][nc]&&grid[nr][nc]==1)
+            {
+                dfs(grid,vis,nr,nc,n,m,dc,dr);
+            }
+        } 
     }
-
-    int numEnclaves(vector<vector<int>>& grid) {
-        int m = grid.size();
-        int n = grid[0].size();
-        vector<vector<bool>> visit(m, vector<bool>(n));
-
-        for (int i = 0; i < m; ++i) {
-            // First column.
-            if (grid[i][0] == 1 && !visit[i][0]) {
-                dfs(i, 0, m, n, grid, visit);
+    int numEnclaves(vector<vector<int>>& grid)
+    {
+        int n=grid.size();
+        int m=grid[0].size();
+        vector<vector<int>>vis(n,vector<int>(m,0));
+        int dr[]={0,1,0,-1};
+        int dc[]={1,0,-1,0};
+        for(int j=0;j<m;j++)
+        {
+            if(grid[0][j]==1&&!vis[0][j])
+            {
+                dfs(grid,vis,0,j,n,m,dr,dc);
             }
-            // Last column.
-            if (grid[i][n - 1] == 1 && !visit[i][n - 1]) {
-                dfs(i, n - 1, m, n, grid, visit);
-            }
+             if(grid[n-1][j]==1&&!vis[n-1][j])
+            {
+                dfs(grid,vis,n-1,j,n,m,dr,dc);
+             }  
         }
-
-        for (int i = 0; i < n; ++i) {
-            // First row.
-            if (grid[0][i] == 1 && !visit[0][i]) {
-                dfs(0, i, m, n, grid, visit);
+        for(int i=0;i<n;i++)
+        {
+             if(grid[i][0]==1&&!vis[i][0])
+            {
+                dfs(grid,vis,i,0,n,m,dr,dc);
             }
-            // Last row.
-            if (grid[m - 1][i] == 1 && !visit[m - 1][i]) {
-                dfs(m - 1, i, m, n, grid, visit);
+             if(grid[i][m-1]==1&&!vis[i][m-1])
+            {
+                dfs(grid,vis,i,m-1,n,m,dr,dc);
             }
+            
         }
-
-        int count = 0;
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (grid[i][j] == 1 && !visit[i][j]) {
-                    count++;
+        int ct=0;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(grid[i][j]==1&&!vis[i][j])
+                {
+                    ct++;
                 }
             }
         }
-        return count;
+        
+        return ct;
+        
+        
+        
     }
 };
