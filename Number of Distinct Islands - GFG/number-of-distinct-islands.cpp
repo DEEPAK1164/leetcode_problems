@@ -5,49 +5,46 @@ using namespace std;
 
 
 // } Driver Code Ends
-// User function Template for C++...
+// User function Template for C++
+
 class Solution {
-    private:
-    void dfs(int r,int c,vector<vector<int>>&vis,vector<vector<int>>&grid,
-    vector<pair<int,int>>&vec, int baserow,int basecol)
-    {
-          int n=grid.size();
-        int m=grid[0].size();
-        vis[r][c]=1;
-        vec.push_back({r-baserow,c-basecol   });
-        int dr[]={-1,0,1,0};
-        int dc[]={0,-1,0,1};
-        for(int i=0;i<4;i++)
-        {
-            int nbr=r+dr[i];
-            int nbc=c+dc[i];
-            if(nbr>=0&&nbr<n&&nbc>=0&&nbc<m&&!vis[nbr][nbc]&&grid[nbr][nbc]==1)
-            {
-                dfs(nbr,nbc,vis,grid,vec,baserow,basecol);
+  public:
+  void dfs(vector<vector<int>>& grid, vector<vector<int>>& vis, int sr, int sc, int n, int m, int dr[], int dc[], string& shape) {
+        vis[sr][sc] = 1;
+        for (int i = 0; i < 4; i++) {
+            int nr = sr + dr[i];
+            int nc = sc + dc[i];
+            if (nr >= 0 && nr < n && nc >= 0 && nc < m && grid[nr][nc] == 1 && !vis[nr][nc]) {
+                if (i == 0) shape += 'R';
+                else if (i == 1) shape += 'D';
+                else if (i == 2) shape += 'L';
+                else shape += 'U';
+                dfs(grid, vis, nr, nc, n, m, dr, dc, shape);
             }
         }
+        shape += 'X'; // Add a delimiter at the end of each island's shape representation
     }
-  public:
-    int countDistinctIslands(vector<vector<int>> &grid) {
+    int countDistinctIslands(vector<vector<int>>& grid) {
         // code here
-       
-        int n=grid.size();
-        int m=grid[0].size();
-         vector<vector<int>>vis(n,vector<int>(m,0));
-        set<vector<pair<int,int>>>st;
-        for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<m;j++)
-            {
-                if(!vis[i][j]&&grid[i][j]==1)
-                {
-                    vector<pair<int,int>>v;
-                    dfs(i,j,vis,grid,v,i,j);
-                    st.insert(v);
+        
+        int ct = 0;
+        int n = grid.size();
+        int m = grid[0].size();
+        vector<vector<int>> vis(n, vector<int>(m, 0));
+        int dr[] = {0, 1, 0, -1};
+        int dc[] = {1, 0, -1, 0};
+        set<string> distinctIslands; // Use a set to store unique island shapes
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] == 1 && !vis[i][j]) {
+                    string shape = ""; // Store the shape representation of the island
+                    dfs(grid, vis, i, j, n, m, dr, dc, shape);
+                    distinctIslands.insert(shape);
                 }
             }
         }
-        return st.size();
+        return distinctIslands.size();
     }
 };
 
