@@ -15,7 +15,7 @@ public:
         ntake=rec(nums,ind+1,x,p, n,dp);
         if((nums[ind])%2==p)
         {
-            take=nums[ind]+rec(nums,ind+1,x,p,n,dp);
+            take=nums[ind]+rec(nums,ind+1,x,nums[ind]%2,n,dp);
         }
         else
         {
