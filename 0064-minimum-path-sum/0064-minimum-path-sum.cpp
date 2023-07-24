@@ -1,34 +1,27 @@
 class Solution {
 public:
-    int minPathSum(vector<vector<int>>& grid) {
-        int n=grid.size();
-        int m=grid[0].size();
-         vector<vector<int>> dp(n, vector<int> (m, 0));
-        
-        for(int i=n-1;i>=0;i--)
-        {
-            for(int j=m-1;j>=0;j--)
-            {
-                if(i==n-1&&j==m-1)
-                {
-                    dp[i][j]=grid[i][j];
-                }
-                else if(i==n-1)
-                {
-                   dp[i][j]=grid[i][j]+dp[i][j+1]; 
-                }
-                else if(j==m-1)
-                {
-                    dp[i][j]=grid[i][j]+dp[i+1][j]; 
-                }
-                else
-                {
-                    dp[i][j]=grid[i][j]+min(dp[i][j+1],dp[i+1][j]);
-                }
-            }
-        }
-        
-        return dp[0][0];
-        
-    }
+   
+int minSumPathUtil(int i, int j,vector<vector<int>> &matrix,vector<vector<int>> &dp)
+{
+  if(i==0 && j == 0)
+    return matrix[0][0];
+  if(i<0 || j<0)
+    return 1e9;
+  if(dp[i][j]!=-1) return dp[i][j];
+    
+  int up = matrix[i][j]+minSumPathUtil(i-1,j,matrix,dp);
+  int left = matrix[i][j]+minSumPathUtil(i,j-1,matrix,dp);
+  
+  return dp[i][j] = min(up,left);
+  
+}
+
+int minPathSum(vector<vector<int> > &grid){
+    int n=grid.size();
+    int m=grid[0].size();
+    vector<vector<int> > dp(n,vector<int>(m,-1));
+
+    return minSumPathUtil(n-1,m-1,grid,dp);
+    
+}
 };
