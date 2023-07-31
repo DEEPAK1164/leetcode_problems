@@ -18,7 +18,7 @@ public:
 private:
     // Return minimum cost to make s1[0...i-1] and s2[0...j-1] equal
     int computeCost(const string& s1, const string& s2, int i, int j, vector<vector<int>>& dp) {
-        if (i == 0) {
+        if (i < 1) {
             // If s1 is empty, then we need to delete all characters of s2.
             int deleteCost = 0;
             for (int pointer = 0; pointer < j; pointer++) {
@@ -27,7 +27,7 @@ private:
             return deleteCost;
         }
 
-        if (j == 0) {
+        if (j < 1) {
             // If s2 is empty, then we need to delete all characters of s1.
             int deleteCost = 0;
             for (int pointer = 0; pointer < i; pointer++) {
