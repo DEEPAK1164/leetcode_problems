@@ -43,7 +43,7 @@ public:
 
                 // We only update the queue if the new calculated dist is
                 // less than the prev and the stops are also within limits.
-                if (cost + edW < dist[adjNode] && stops <= K)
+                if (cost + edW < dist[adjNode])
                 {
                     dist[adjNode] = cost + edW;
                     q.push({stops + 1, {adjNode, cost + edW}});
