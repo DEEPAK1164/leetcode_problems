@@ -18,23 +18,14 @@ public:
         return 0;
     int lh = height(root->left);
     int rh = height(root->right);
+        mx=max(mx,lh+rh);
     return 1 + max(lh, rh);
     }
-    void pre(TreeNode* root)
-    {
-        if(root==NULL)
-            return;
-        mx=max(mx,height(root->left)+height(root->right)); 
-        pre(root->left);
-        pre(root->right);
-    }
+    
     int diameterOfBinaryTree(TreeNode* root) {
        if (root == NULL)
         return 0;
-        pre(root);
+        height(root);
         return mx;
-        
-        
-   
     }
 };
