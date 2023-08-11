@@ -1,33 +1,27 @@
 class Solution {
 public:
-    int rec(vector<int>&v,int ind,int buy,vector<vector<int>>&dp)
-    {
-        
-        if(ind==v.size())
-        {
-            return 0;
-        }
-        if(dp[ind][buy]!=-1)
-        {
-            return dp[ind][buy];
-        }
-        int profit=0;
-        if(buy)
-        {
-            profit=max(-v[ind]+rec(v,ind+1,0,dp),rec(v,ind+1,1,dp));
+    int maxProfit(vector<int>& Arr) {
+         int n=Arr.size();
+    vector<vector<int>> dp(n+1,vector<int>(2,-1));
+    
+    //base condition
+    dp[n][0] = dp[n][1] = 0;
+    
+    long profit;
+    
+    for(int ind= n-1; ind>=0; ind--){
+        for(int buy=0; buy<=1; buy++){
+            if(buy==0){// We can buy the stock
+                profit = max(0+dp[ind+1][0], -Arr[ind] + dp[ind+1][1]);
+            }
+    
+            if(buy==1){// We can sell the stock
+                profit = max(0+dp[ind+1][1], Arr[ind] + dp[ind+1][0]);
+            }
             
+            dp[ind][buy]  = profit;
         }
-        else
-        {
-            profit=max(v[ind]+rec(v,ind+1,1,dp),rec(v,ind+1,0,dp));
-        }
-         return dp[ind][buy]=profit;
-        
-        
-        
     }
-    int maxProfit(vector<int>& prices) {
-        vector<vector<int>>dp(prices.size(),vector<int>(2,-1));
-        return rec(prices,0,1,dp);
+    return dp[0][0];
     }
 };
