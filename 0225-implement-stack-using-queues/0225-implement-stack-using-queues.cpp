@@ -1,11 +1,6 @@
 class MyStack {
-private:
-    std::queue<int> q1, q2;
-
 public:
-    MyStack() {
-
-    }
+    std::queue<int> q1, q2;
 
     void push(int x) {
         // Push the new element to an empty queue
