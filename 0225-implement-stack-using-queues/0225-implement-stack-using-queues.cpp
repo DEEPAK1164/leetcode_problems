@@ -1,49 +1,32 @@
 class MyStack {
 public:
-    std::queue<int> q1, q2;
-
+   queue<int>q;
     void push(int x) {
-        // Push the new element to an empty queue
-        if (q1.empty()) {
-            q1.push(x);
-            while (!q2.empty()) {
-                q1.push(q2.front());
-                q2.pop();
-            }
-        } else {
-            q2.push(x);
-            while (!q1.empty()) {
-                q2.push(q1.front());
-                q1.pop();
-            }
-        }
-    }
+        q.push(x);  // Push the new element to the queue
 
+    // Rotate the queue to simulate the stack behavior
+    int sz = q.size();
+    for (int i = 0; i < sz - 1; i++) {
+        q.push(q.front());  // Push the front element to the back
+        q.pop();            // Remove the front element
+    }
+    }
+    
     int pop() {
-        if (!q1.empty()) {
-            int val = q1.front();
-            q1.pop();
-            return val;
-        } else if (!q2.empty()) {
-            int val = q2.front();
-            q2.pop();
-            return val;
-        }
-        // Return some default value or handle the underflow case
-        return -1; // For example
+        if(q.empty())
+            return -1;
+        int x=q.front();
+        q.pop();
+        return x;
     }
-
+    
     int top() {
-        if (!q1.empty()) {
-            return q1.front();
-        } else if (!q2.empty()) {
-            return q2.front();
-        }
-        // Return some default value or handle the underflow case
-        return -1; // For example
+        if(q.empty())
+            return -1;
+        return q.front();
     }
-
+    
     bool empty() {
-        return q1.empty() && q2.empty();
+        return q.empty();
     }
 };
