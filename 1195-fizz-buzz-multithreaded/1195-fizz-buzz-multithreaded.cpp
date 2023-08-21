@@ -20,7 +20,7 @@ public:
             }
             if(i<=n){
                 printFizz();
-                ++i;
+                i++;
             }
             c.notify_all();
         }
@@ -35,7 +35,7 @@ public:
             }
             if(i<=n){
                 printBuzz();
-                ++i;
+                i++;
             }
             c.notify_all();
         }
@@ -50,7 +50,7 @@ public:
             }
             if(i<=n){
                 printFizzBuzz();
-                ++i;
+                i++;
             }
             c.notify_all();
         }
