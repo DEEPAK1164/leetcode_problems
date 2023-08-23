@@ -1,6 +1,4 @@
 # Write your MySQL query statement below
 SELECT eu.unique_id, e.name
 FROM Employees e
-LEFT OUTER JOIN EmployeeUNI eu ON e.id = eu.id
-ORDER BY e.id;
-
+LEFT OUTER JOIN EmployeeUNI eu ON e.id = eu.id;
