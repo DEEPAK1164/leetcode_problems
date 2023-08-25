@@ -11,35 +11,34 @@
  */
 class Solution {
 public:
-    vector<int>preorder(TreeNode* root)
-    {
-        vector<int>ans;
-        stack<TreeNode* >st;
-        if(root==NULL)
-            return ans;
-        st.push(root);
-        while(!st.empty())
-        {
-            root=st.top();
-            st.pop();
-            ans.push_back(root->val);
-            if(root->right!=NULL)
-            {
-                st.push(root->right);
-            }
-            if(root->left!=NULL)
-            {
-                st.push(root->left);
-            }
-        }
-        return ans;
-    }
     int kthSmallest(TreeNode* root, int k) {
-        vector<int>res=preorder(root);
-        sort(res.begin(),res.end());
-        return res[k-1];
+        int ct = 0;
+        int res = 0; // Initialize the result variable
         
+        // Call the helper function to perform the search
+        kthSmallestHelper(root, k, ct, res);
         
+        return res;
+    }
+    
+private:
+    // Helper function for kthSmallest
+    void kthSmallestHelper(TreeNode* node, int k, int& ct, int& res) {
+        if (!node) {
+            return; // Base case: reached the end of the tree
+        }
         
+        // Traverse the left subtree
+        kthSmallestHelper(node->left, k, ct, res);
+        
+        // Process the current node
+        ct++; // Increment count of visited nodes
+        if (ct == k) {
+            res = node->val; // If kth smallest node is found, update the result
+            return; // No need to continue further
+        }
+        
+        // Traverse the right subtree
+        kthSmallestHelper(node->right, k, ct, res);
     }
 };
