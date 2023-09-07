@@ -10,38 +10,31 @@
  */
 class Solution {
 public:
-    ListNode* reverseBetween(ListNode* head, int left, int right) {
-        vector<int>v;
-        ListNode* temp=head;
-        while(temp!=NULL)
-        {
-            v.push_back(temp->val);
-            temp=temp->next;
-        }
-        int l=0;
-        int r=0;
-        for(int i=1;i<left;i++)
-        {
-            l++;
-        }
+    ListNode* reverseBetween(ListNode* head, int left, int right)
+    {
+      ListNode* dummy = new ListNode(0);
+dummy->next = head;
+
         
-        for(int j=1;j<right;j++)
+        ListNode* p=dummy;
+        ListNode* c=head;
+        for(int i=0;i<left-1;i++)
         {
-            r++;
-        }
-        while(l<r)
-        {
-            swap(v[l++],v[r--]);
-        }
-        int id=0;
-        ListNode* p=head;
-        while(p!=NULL)
-        {
-            p->val=v[id++];
             p=p->next;
+            c=c->next;
         }
-        return head;
-        
-        
+        ListNode* sh=c;
+        ListNode* pp=NULL;
+        for(int i=0;i<right-left+1;i++)
+        {
+            ListNode* n=c->next;
+            c->next=pp;
+            pp=c;
+            c=n; 
+        }
+        p->next=pp;
+        sh->next=c;
+        return dummy->next;
+    
     }
 };
