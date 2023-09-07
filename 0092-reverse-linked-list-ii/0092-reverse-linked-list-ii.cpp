@@ -29,7 +29,7 @@ public:
         {
             r++;
         }
-        while(l<=r)
+        while(l<r)
         {
             swap(v[l++],v[r--]);
         }
