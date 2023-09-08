@@ -1,21 +1,28 @@
 class Solution {
 public:
-    int lengthOfLIS(vector<int>& nums) {
-         int n = nums.size();
-        if (n == 0) {
+    int rec(int ind,int pid,vector<int>&nums,vector<vector<int>>&dp)
+    {
+        int n=nums.size();
+        if(ind==n)
+        {
             return 0;
         }
-        
-        vector<int> dp(n, 1); // Initialize DP array with minimum LIS length of 1 for each element
-        
-        for (int i = 1; i < n; ++i) {
-            for (int j = 0; j < i; ++j) {
-                if (nums[i] > nums[j]) {
-                    dp[i] = max(dp[i], dp[j] + 1);
-                }
-            }
+        if(dp[ind][pid+1]!=-1)
+        {
+            return dp[ind][pid+1];
         }
-        
-        return *max_element(dp.begin(), dp.end()); 
+        int nt=0+rec(ind+1,pid,nums,dp);
+        int t=0;
+        if(pid==-1||nums[ind]>nums[pid])
+        {
+            t=1+rec(ind+1,ind,nums,dp);
+        }
+        return dp[ind][pid+1]= max(nt,t);
+    }
+    int lengthOfLIS(vector<int>& nums) {
+        int n=nums.size();
+         vector<vector<int>> dp(n,vector<int>(n+1,-1));
+    
+    return rec(0,-1,nums,dp);
     }
 };
