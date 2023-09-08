@@ -1,28 +1,31 @@
 class Solution {
 public:
-    int rec(int ind,int pid,vector<int>&nums,vector<vector<int>>&dp)
+    int lengthOfLIS(vector<int>& arr)
     {
-        int n=nums.size();
-        if(ind==n)
+        vector<int>dp(arr.size(),0);
+        
+          int mxx=0;
+        for(int i=0;i<dp.size();i++)
         {
-            return 0;
+          
+            int mx=0;
+            for(int j=0;j<i;j++)
+            {
+                if(arr[i]>arr[j])
+                {
+                    if(dp[j]>mx)
+                    {
+                        mx=dp[j];
+                    }
+                }
+               
+            }
+             dp[i]=mx+1;
+            mxx=max(dp[i],mxx);
         }
-        if(dp[ind][pid+1]!=-1)
-        {
-            return dp[ind][pid+1];
-        }
-        int nt=0+rec(ind+1,pid,nums,dp);
-        int t=0;
-        if(pid==-1||nums[ind]>nums[pid])
-        {
-            t=1+rec(ind+1,ind,nums,dp);
-        }
-        return dp[ind][pid+1]= max(nt,t);
-    }
-    int lengthOfLIS(vector<int>& nums) {
-        int n=nums.size();
-         vector<vector<int>> dp(n+2,vector<int>(n+2,-1));
-    
-    return rec(0,-1,nums,dp);
+        return mxx;
+        
+        
+        
     }
 };
