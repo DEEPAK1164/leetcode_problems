@@ -15,10 +15,7 @@ class Solution{
             {
                 if(arr[i]>arr[j])
                 {
-                    if(dp[j]>mx)
-                    {
-                        mx=dp[j];
-                    }
+                   mx=max(dp[j],mx);
                 }
                
             }
