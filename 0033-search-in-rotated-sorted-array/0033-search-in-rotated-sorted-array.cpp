@@ -2,10 +2,6 @@ class Solution {
 public:
     int search(vector<int>& nums, int target) 
     {
-        
-        
-        
-        
         int l=0,h=nums.size()-1,mid;
         int ans;
         while(l<=h)
@@ -39,6 +35,7 @@ public:
                 } 
             }
         }
+    
     return -1;
    
     }
