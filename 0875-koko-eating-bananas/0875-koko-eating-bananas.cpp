@@ -9,7 +9,7 @@ public:
         int ans=INT_MAX;
         while(l<=e)
         {
-            unsigned int sm=0;
+            long long int sm=0;
             mid=l+(e-l)/2;
             for (int i = 0; i < piles.size(); i ++) 
             {
