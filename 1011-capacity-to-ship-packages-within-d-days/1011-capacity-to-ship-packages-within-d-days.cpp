@@ -6,7 +6,7 @@ public:
             currentLoad += weight;
             if (currentLoad > c) {
                 daysNeeded++;
-                currentLoad = weight;
+                currentLoad=weight;
             }
         }
 
@@ -16,18 +16,18 @@ public:
     int shipWithinDays(vector<int>& weights, int days) 
     {
         
-         int totalLoad = 0, maxLoad = 0;
+         int totalLoad = 0, mn = INT_MIN;
         for (int weight : weights) {
             totalLoad += weight;
-            maxLoad = max(maxLoad, weight);
+            mn = max(mn, weight);
         }
 
-        int l = maxLoad, r = totalLoad;
+        int l = mn, r = totalLoad;
 
-        while (l < r) {
-            int mid = (l + r) / 2;
+        while (l <=r) {
+            int mid = l+(r-l)/ 2;
             if (feasible(weights, mid, days)) {
-                r = mid;
+                r = mid-1;
             } else {
                 l = mid + 1;
             }
