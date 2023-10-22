@@ -21,7 +21,7 @@ class Solution {
       return dp[ind][sum]= p+np;
   }
     long long int count(int coins[], int N, int sum) {
-        vector<vector<long long>>dp(N,vector<long long>(sum+1,-1));
+        vector<vector<long long>>dp(N+1,vector<long long>(sum+1,-1));
       return f(coins,N-1,sum,dp); 
         // code here.
     }
