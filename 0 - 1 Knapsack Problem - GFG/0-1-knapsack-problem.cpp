@@ -28,7 +28,7 @@ class Solution
     }
     int knapSack(int W, int wt[], int val[], int n) 
     { 
-        vector<vector<int>>dp(W+1,vector<int>(n+1,-1));
+        vector<vector<int>>dp(W+2,vector<int>(n+2,-1));
        return f(W,wt,val,n,dp);
        // Your code here
     }
