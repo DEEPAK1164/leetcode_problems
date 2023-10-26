@@ -8,7 +8,7 @@ using namespace std;
 
 class Solution {
 public:
-    long long f(int arr[], int i, int j, int sm, vector<vector<int>>& dp) {
+    long long f(int arr[], int i, int j, vector<vector<int>>& dp) {
         if (j == i + 1)
             return max(arr[i], arr[j]);
 
@@ -16,7 +16,7 @@ public:
             return dp[i][j];
 
 
- return dp[i][j] = max(sm - f(arr, i + 1, j, sm - arr[i],dp), sm - f(arr, i, j - 1, sm - arr[j],dp));
+ return dp[i][j] =max(arr[i]+min(f(arr,i+2,j,dp),f(arr,i+1,j-1,dp)), arr[j]+min(f(arr,i,j-2,dp),f(arr,i+1,j-1,dp)));
     }
     long long maximumAmount(int arr[], int n) {
         vector<vector<int>> dp(n, vector<int>(n, -1));
@@ -27,7 +27,7 @@ public:
             sm += arr[i];
         }
 
-        return f(arr, 0, n - 1, sm, dp);
+        return f(arr, 0, n - 1,  dp);
     }
 };
 
