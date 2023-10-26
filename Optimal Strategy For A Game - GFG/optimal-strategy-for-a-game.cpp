@@ -15,13 +15,9 @@ public:
         if (dp[i][j] != -1)
             return dp[i][j];
 
-        long long option1 = sm - f(arr, i + 1, j, sm - arr[i],dp);
-        long long option2 = sm - f(arr, i, j - 1, sm - arr[j],dp);
 
-        dp[i][j] = max(option1, option2);
-        return dp[i][j];
+ return dp[i][j] = max(sm - f(arr, i + 1, j, sm - arr[i],dp), sm - f(arr, i, j - 1, sm - arr[j],dp));
     }
-
     long long maximumAmount(int arr[], int n) {
         vector<vector<int>> dp(n, vector<int>(n, -1));
 
